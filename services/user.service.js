@@ -4,7 +4,7 @@ const UserModel = require('../model/user.model').UserModel;
 
 const UserDto = require('../model/user.model').UserDto;
 
-function createUser(userDto){
+let createUser = (userDto) => {
 
     let userToSave = new UserModel(userDto);
 
@@ -13,5 +13,6 @@ function createUser(userDto){
             console.error.bind(console, 'Error saving user: ')
         }
     });
-
 }
+
+exports.createUser = createUser;
