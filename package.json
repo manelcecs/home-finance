@@ -1,0 +1,23 @@
+{
+  "name": "home-finance",
+  "version": "0.0.0",
+  "description": "SPA/PWA. Mono repo distributed architecture. Node + Express backend. Node + React Frontend. Circle CI and sonarcloud integrated. Docker deploy.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manelcecs/home-finance.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manelcecs/home-finance/issues"
+  },
+  "homepage": "https://github.com/manelcecs/home-finance#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.2"
+  }
+}
