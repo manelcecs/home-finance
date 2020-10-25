@@ -1,12 +1,18 @@
 'use strict';
 const mongose = require('mongoose');
+const dbURI = require('../security/index').dbURI;
+let dbUriRead= Buffer.from(dbURI, 'base64').toString();
 
-mongose.connect('mongodb://localhost:27017/home-finance', { useNewUrlParser: true, useUnifiedTopology: true });
+mongose.connect(dbUriRead, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
 
 mongose.Promise = global.Promise;
 
+//Load models
+require('../../model/user.model');
+
 let db = mongose.connection;
+console.log("Models:", db.models);
 
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
-module.exports = db;
+module.exports = db.db;

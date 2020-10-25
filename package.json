@@ -4,7 +4,8 @@
   "description": "SPA/PWA. Mono repo distributed architecture. Node + Express backend. Node + React Frontend. Circle CI and sonarcloud integrated. Docker deploy.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "init": "node index.js",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,10 @@
   },
   "homepage": "https://github.com/manelcecs/home-finance#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.10.2"
+    "mongoose": "^5.10.2",
+    "nodemon": "^2.0.6"
   }
 }
