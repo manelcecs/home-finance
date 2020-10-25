@@ -13,6 +13,7 @@ require('../../model/user.model');
 let db = mongose.connection;
 console.log("Models:", db.models);
 
+
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
-module.exports = db;
+module.exports = db.db;

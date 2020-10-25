@@ -11,7 +11,6 @@ const userRouter = require('./routes/user.routes');
 
 app.listen(port, ()=>{
     console.log(`App listening on port:${port}`);
-    console.log(`Database ${database.name} ready`);
 });
 
 app.use(bodyParser.json());

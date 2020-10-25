@@ -11,16 +11,15 @@ let createUser = (userDto) => {
 }
 
 let getAllUsers = () => {
-    return UserModel.find({}).exec();
+    return UserModel.find({});
 }
 
 let getUserById = (idUser) => {
-    return UserModel.findById(idUser).exec();
+    return UserModel.findById(idUser);
 }
 
 let getUserByUsername = (username) => {
-    console.log("Searching user: ", username);
-    return UserModel.find({'user_name': username}).exec();
+    return UserModel.find({'user_name': username});
 }
 
 let getIfUserLoginValid = (user, userLogin) => {
