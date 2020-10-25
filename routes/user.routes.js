@@ -90,4 +90,17 @@ router.put('/activate/:id', function(req, res){
     
 });
 
+router.delete('/delete/:id', function(req, res){
+    console.log("User Routes -- delete user");
+    if(req.params.id){
+        UserService.deleteUser(req.params.id).then(()=>{
+            res.status(200).send("User was deleted")
+        }).catch(err =>
+            res.status(500).send('Something went wrong.\n'+err)
+        )
+    }else{            
+        res.status(500).send('Something went wrong.\n'+'Param was not setted');
+    }
+});
+
 module.exports = router;

@@ -34,6 +34,10 @@ const activateUser = (idUser) =>{
     return UserModel.findByIdAndUpdate(idUser, {active: true}, {new: true});
 }
 
+const deleteUser = (idUSer) =>{
+    return UserModel.findByIdAndDelete(idUSer);
+}
+
 exports.createUser = createUser;
 exports.getAllUsers = getAllUsers;
 exports.getUserById = getUserById;
@@ -41,3 +45,4 @@ exports.getUserByUsername = getUserByUsername;
 exports.getIfUserLoginValid = getIfUserLoginValid;
 exports.deactivateUser = deactivateUser;
 exports.activateUser = activateUser;
+exports.deleteUser = deleteUser;
