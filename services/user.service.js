@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const UserModel = mongoose.model('Users');
 
-let createUser = (userDto) => {
+const createUser = (userDto) => {
 
     let userToSave = new UserModel(userDto);
 
@@ -10,20 +10,28 @@ let createUser = (userDto) => {
 
 }
 
-let getAllUsers = () => {
+const getAllUsers = () => {
     return UserModel.find({});
 }
 
-let getUserById = (idUser) => {
+const getUserById = (idUser) => {
     return UserModel.findById(idUser);
 }
 
-let getUserByUsername = (username) => {
+const getUserByUsername = (username) => {
     return UserModel.find({'user_name': username});
 }
 
-let getIfUserLoginValid = (user, userLogin) => {
+const getIfUserLoginValid = (user, userLogin) => {
     return user.password == userLogin.password;
+}
+
+const deactivateUser = (idUser) =>{
+    return UserModel.findByIdAndUpdate(idUser, {active: false}, {new: true});
+}
+
+const activateUser = (idUser) =>{
+    return UserModel.findByIdAndUpdate(idUser, {active: true}, {new: true});
 }
 
 exports.createUser = createUser;
@@ -31,3 +39,5 @@ exports.getAllUsers = getAllUsers;
 exports.getUserById = getUserById;
 exports.getUserByUsername = getUserByUsername;
 exports.getIfUserLoginValid = getIfUserLoginValid;
+exports.deactivateUser = deactivateUser;
+exports.activateUser = activateUser;

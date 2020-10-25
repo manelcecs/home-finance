@@ -13,6 +13,7 @@ app.listen(port, ()=>{
     console.log(`App listening on port:${port}`);
 });
 
+app.use(require("cors")());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
     

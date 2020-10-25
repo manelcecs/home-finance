@@ -28,20 +28,66 @@ router.get('/', function(req, res){
 
 router.get('/:username', function(req, res){
     console.log("Llamada controlador user -- getByUserName");
-    UserService.getUserByUsername(req.params.username).then(user=>
-        res.status(200).send(user)
-    ).catch(err=>
-        res.status(500).send('Something went wrong.\n'+err)
-    );
+    if(req.params.username){
+        UserService.getUserByUsername(req.params.username).then(user=>
+            res.status(200).send(user)
+        ).catch(err=>
+            res.status(500).send('Something went wrong.\n'+err)
+        );
+    }else{
+        res.status(500).send('Something went wrong.\n'+'Param was not setted');
+    }
+    
 });
 
 router.get('/id/:id', function(req, res){
     console.log("Llamada controlador user -- getUserById");
-    UserService.getUserById(req.params.id).then(user=>
-        res.status(200).send(user)
-    ).catch(err=>
-        res.status(500).send('Something went wrong.\n'+err)
-    );
+    if(req.params.id){
+        UserService.getUserById(req.params.id).then(user=>
+            res.status(200).send(user)
+        ).catch(err=>
+            res.status(500).send('Something went wrong.\n'+err)
+        );
+    }else{
+        res.status(500).send('Something went wrong.\n'+'Param was not setted');
+    }
+    
+});
+
+router.put('/deactivate/:id', function(req, res){
+    console.log("User Routes -- deactivate user");
+    if(req.params.id){
+        UserService.deactivateUser(req.params.id).then(user =>{
+            if(user.active){
+                res.status(200).send('User cannot be deactivate');
+            }else{
+                res.status(200).send('User was deactivate');
+            }
+        }).catch(err =>
+            res.status(500).send('Something went wrong.\n'+err)
+        )
+    }else{
+        res.status(500).send('Something went wrong.\n'+'Param was not setted');
+    }
+    
+});
+
+router.put('/activate/:id', function(req, res){
+    console.log("User Routes -- activate user");
+    if(req.params.id){
+        UserService.activateUser(req.params.id).then(user =>{
+            if(user.active){
+                res.status(200).send('User was activate');
+            }else{
+                res.status(200).send('User cannot be activate');
+            }
+        }).catch(err =>
+            res.status(500).send('Something went wrong.\n'+err)
+        )
+    }else{
+        res.status(500).send('Something went wrong.\n'+'Param was not setted');
+    }
+    
 });
 
 module.exports = router;
