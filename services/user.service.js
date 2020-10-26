@@ -19,11 +19,22 @@ const getUserById = (idUser) => {
 }
 
 const getUserByUsername = (username) => {
-    return UserModel.find({'user_name': username});
+    return UserModel.findOne({'user_name': username});
 }
 
-const getIfUserLoginValid = (user, userLogin) => {
-    return user.password == userLogin.password;
+const getLogin = (user, password) => {
+    
+    return getUserByUsername(user).then(userDB => {
+        if(password === userDB.password){
+            return UserModel.findByIdAndUpdate(userDB.id, {last_login: new Date()}, {new: true}).then(userSaved =>{
+                return userSaved;
+            });
+        }
+    }).catch(err=>{
+        console.log(`Error. ${err}`);
+        return undefined;
+    });
+    
 }
 
 const deactivateUser = (idUser) =>{
@@ -42,7 +53,7 @@ exports.createUser = createUser;
 exports.getAllUsers = getAllUsers;
 exports.getUserById = getUserById;
 exports.getUserByUsername = getUserByUsername;
-exports.getIfUserLoginValid = getIfUserLoginValid;
+exports.getLogin = getLogin;
 exports.deactivateUser = deactivateUser;
 exports.activateUser = activateUser;
 exports.deleteUser = deleteUser;

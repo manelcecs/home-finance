@@ -1,7 +1,6 @@
 'use strict';
 const mongose = require('mongoose');
-const dbURI = require('../security/index').dbURI;
-let dbUriRead= Buffer.from(dbURI, 'base64').toString();
+let dbUriRead= Buffer.from(process.env.dbURI, 'base64').toString();
 
 mongose.connect(dbUriRead, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
 

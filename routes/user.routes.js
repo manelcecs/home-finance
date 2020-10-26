@@ -1,7 +1,9 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-let UserService = require('../services/user.service');
+const UserService = require('../services/user.service');
+
+const authMiddleware = require('../middlewares/authenticate.middleware');
 
 router.post('/', function(req, res){
     if(!req.body.user){
@@ -16,7 +18,7 @@ router.post('/', function(req, res){
     }
 });
 
-router.get('/', function(req, res){
+router.get('/', authMiddleware, function(req, res){
     console.log("Llamada controlador user -- getAll");
     UserService.getAllUsers().then(users=>
         res.status(200).send(users)
@@ -26,7 +28,7 @@ router.get('/', function(req, res){
     
 });
 
-router.get('/:username', function(req, res){
+router.get('/:username', authMiddleware, function(req, res){
     console.log("Llamada controlador user -- getByUserName");
     if(req.params.username){
         UserService.getUserByUsername(req.params.username).then(user=>
@@ -40,7 +42,7 @@ router.get('/:username', function(req, res){
     
 });
 
-router.get('/id/:id', function(req, res){
+router.get('/id/:id', authMiddleware, function(req, res){
     console.log("Llamada controlador user -- getUserById");
     if(req.params.id){
         UserService.getUserById(req.params.id).then(user=>
@@ -54,7 +56,7 @@ router.get('/id/:id', function(req, res){
     
 });
 
-router.put('/deactivate/:id', function(req, res){
+router.put('/deactivate/:id', authMiddleware, function(req, res){
     console.log("User Routes -- deactivate user");
     if(req.params.id){
         UserService.deactivateUser(req.params.id).then(user =>{
@@ -72,7 +74,7 @@ router.put('/deactivate/:id', function(req, res){
     
 });
 
-router.put('/activate/:id', function(req, res){
+router.put('/activate/:id', authMiddleware, function(req, res){
     console.log("User Routes -- activate user");
     if(req.params.id){
         UserService.activateUser(req.params.id).then(user =>{
@@ -90,7 +92,7 @@ router.put('/activate/:id', function(req, res){
     
 });
 
-router.delete('/delete/:id', function(req, res){
+router.delete('/delete/:id', authMiddleware, function(req, res){
     console.log("User Routes -- delete user");
     if(req.params.id){
         UserService.deleteUser(req.params.id).then(()=>{
