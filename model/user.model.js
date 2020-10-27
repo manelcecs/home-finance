@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
 
 //Define user Schema
-let UserSchema = new Schema({
+const UserSchema = new Schema({
     _id: {
         type: Schema.Types.ObjectId,
         default: new ObjectId(),
@@ -32,7 +32,7 @@ let UserSchema = new Schema({
 });
 
 //Data Transfer Object of User
-let UserDto = {
+const UserDto = {
     user_name:String,
     password: String,
     active: Boolean,
@@ -40,7 +40,7 @@ let UserDto = {
     last_login: Date
 }
 
-let UserLogin = {
+const UserLogin = {
     user_name: String,
     password: String,    
 }

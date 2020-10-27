@@ -8,6 +8,7 @@ mongose.Promise = global.Promise;
 
 //Load models
 require('../../model/user.model');
+require('../../model/saving.model');
 
 let db = mongose.connection;
 console.log("Models:", db.models);
