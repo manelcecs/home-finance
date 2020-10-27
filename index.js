@@ -1,13 +1,17 @@
+require('./config/security');
+
 const express = require('express');
 const app = express();
 const port = 3000;
 
 const bodyParser = require('body-parser');
 
-const database = require('./config/mongoose/index');
+require('./config/mongoose/index');
 
 const userRouter = require('./routes/user.routes');
+const login = require('./routes/login.routes');
 
+app.disable('x-powered-by');
 
 app.listen(port, ()=>{
     console.log(`App listening on port:${port}`);
@@ -19,7 +23,4 @@ app.use(bodyParser.urlencoded({ extended: false }));
     
  //General routers
 app.use('/users', userRouter);
-
-app.get("/", (req, res)=>{
-    res.status(404).send('');
-});
+app.use('/', login);
