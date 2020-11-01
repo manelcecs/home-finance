@@ -1,4 +1,4 @@
-require('./config/security');
+require('./config/security/index');
 
 const express = require('express');
 const app = express();

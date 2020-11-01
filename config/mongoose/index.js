@@ -1,6 +1,8 @@
 'use strict';
 const mongose = require('mongoose');
-let dbUriRead= Buffer.from(process.env.dbURI, 'base64').toString();
+const dbUri = process.env.profile === 'dev' ? process.env.dbURI : process.env.dbURItest;
+
+const dbUriRead = Buffer.from(dbUri, 'base64').toString();
 
 mongose.connect(dbUriRead, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
 
@@ -11,7 +13,7 @@ require('../../model/user.model');
 require('../../model/saving.model');
 
 let db = mongose.connection;
-console.log("Models:", db.models);
+//console.log("Models:", db.models);
 
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
