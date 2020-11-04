@@ -8,9 +8,4 @@ const getSavingOfUser = (userId) =>{
 
 }
 
-const updateSaving = (saving) =>{
-    return SavingModel.findByIdAndUpdate(saving._id, {amount: saving.amount}, {new: true});
-}
-
 exports.getSavingOfUser = getSavingOfUser;
-exports.updateSaving = updateSaving;

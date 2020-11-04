@@ -11,7 +11,9 @@ const UserSchema = new Schema({
     },
     user_name: {
         type: String,
-        required: [true, 'How will I know who you are?']
+        required: [true, 'How will I know who you are?'],
+        unique: true,
+        index: true,
     },
     password: {
         type: String,
