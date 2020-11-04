@@ -8,22 +8,21 @@ const ObjectId = mongoose.Types.ObjectId;
 
 const userData = {user_name:'dummy', password: 'dummy'}
 
-describe('User model test', ()=>{
+describe('User service test suite', ()=>{
 
     setup();
 
     it('create and save user successfully', async ()=>{
     
-        const validUser = userData;
-        const savedUser = await userService.createUser(validUser);
+        const savedUser = await userService.createUser(userData);
         
         expect(savedUser).to.have.property('_id');
     });
 
     it('create and save user fail', async ()=>{
     
-        const validUser = {user_name:'dummyUser'};
-        const savedUser = await userService.createUser(validUser);
+        const invalidUser = {user_name:'dummyUser'};
+        const savedUser = await userService.createUser(invalidUser);
         
         expect(savedUser).to.be.undefined;
     });
@@ -90,6 +89,7 @@ describe('User model test', ()=>{
 
     after(()=>{
         mongoose.connection.db.dropCollection('users');
+        mongoose.connection.db.dropCollection('savings');
     });
     
 });
