@@ -27,11 +27,7 @@
     "mocha": "^8.2.0",
     "mongoose": "^5.10.2",
     "nodemon": "^2.0.6",
+    "nyc": "^15.1.0",
     "supertest": "^5.0.0"
-  },
-  "devDependencies": {
-    "@shelf/jest-mongodb": "^1.2.3",
-    "jest": "^26.6.1",
-    "nyc": "^15.1.0"
   }
 }
