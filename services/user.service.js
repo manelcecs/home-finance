@@ -1,21 +1,18 @@
 const mongoose = require('mongoose');
 
 const UserModel = mongoose.model('Users');
-const SavingModel = mongoose.model('Savings');
+
+const savingService = require('./saving.service');
 
 const createUser = (userDto) => {
 
     let userToSave = new UserModel(userDto);
-
-    return userToSave.save().then(user => {
-        let userSaving = new SavingModel({
-            user: user._id
-        });
-        userSaving.save();
+    return userToSave.save().then(async user => {
+        await savingService.createSaving(user._id, 0);
         return user;
     }).catch(err => {
         console.log(`Error: ${err}`); 
-        return undefined
+        return undefined;
     });
 
 }

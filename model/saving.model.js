@@ -7,14 +7,21 @@ const SavingSchema = new Schema({
     _id: {
         type: Schema.Types.ObjectId,
         default: new ObjectId(),
+        required: true,
     },
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'Users',
+        required: true,
+        index: true,
     },
     amount: {
         type: Number,
         default: 0,
+    },
+    date: {
+        type: Date,
+        default: new Date(),
     }
 });
 
