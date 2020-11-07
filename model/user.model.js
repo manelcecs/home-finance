@@ -8,6 +8,7 @@ const UserSchema = new Schema({
     _id: {
         type: Schema.Types.ObjectId,
         default: new ObjectId(),
+        required: true,
     },
     user_name: {
         type: String,
