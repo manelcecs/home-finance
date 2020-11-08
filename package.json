@@ -1,7 +1,7 @@
 {
   "name": "home-finance",
-  "version": "0.0.0",
-  "description": "SPA/PWA. Mono repo distributed architecture. Node + Express backend. Node + React Frontend. Circle CI and sonarcloud integrated. Docker deploy.",
+  "version": "0.1.0",
+  "description": "SPA/PWA. Mono repo distributed architecture. Node + Express backend. Node + React Frontend. Circle CI and sonarcloud integrated. Heroku deploy.",
   "main": "index.js",
   "scripts": {
     "init": "node index.js",
