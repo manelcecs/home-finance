@@ -10,6 +10,5 @@ workflows:
       - heroku/deploy-via-git:
           requires:
             - node/test
-          filter:
-            branch:
-              only: master
+          branches:
+            only: master
