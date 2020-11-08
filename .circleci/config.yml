@@ -1,9 +1,6 @@
 jobs:
   deploy:
     executor: heroku/default
-    filters:
-      branches:
-        only: master
     steps:
       - checkout
       - heroku/install
@@ -14,4 +11,7 @@ version: 2.1
 workflows:
   heroku_deploy:
     jobs:
+      filters:
+        branches:
+          only: master
       - deploy
