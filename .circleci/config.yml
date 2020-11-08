@@ -9,10 +9,11 @@ workflows:
             branches:
               only: master
       - build:
-          requires: test
-            filter:
-              branches:
-                only: master
+          requires: 
+            - test
+          filter:
+            branches:
+              only: master
       - heroku/deploy-via-git:
           requires:
             - build
