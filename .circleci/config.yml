@@ -5,14 +5,14 @@ workflows:
   heroku_deploy:
     jobs:
       - test:
-          filters:
+          filter:
             branches:
               only: master
       - build:
           requires: test
-            filters:
-            branches:
-              only: master
+            filter:
+              branches:
+                only: master
       - heroku/deploy-via-git:
           requires:
             - build
