@@ -4,8 +4,8 @@
   "description": "SPA/PWA. Mono repo distributed architecture. Node + Express backend. Node + React Frontend. Circle CI and sonarcloud integrated. Heroku deploy.",
   "main": "index.js",
   "scripts": {
-    "init": "node index.js",
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "nyc mocha --recursive --exit --timeout 10000"
   },
   "repository": {
