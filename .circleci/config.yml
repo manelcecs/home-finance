@@ -7,9 +7,6 @@ workflows:
     jobs:
       - node/test:
           version: 10.19.0
-          filter:
-            branches:
-              only: master
       - build:
           requires: 
             - node/test
