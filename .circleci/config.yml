@@ -4,13 +4,14 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
-      - test:
+      - node/test:
+          version: 10.19.0
           filter:
             branches:
               only: master
       - build:
           requires: 
-            - test
+            - node/test
           filter:
             branches:
               only: master
