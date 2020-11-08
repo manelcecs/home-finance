@@ -5,10 +5,19 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
-      - node/test:
-          version: 10.19.0
+      - build:
+        branches:
+          only: master
+        steps:
+          - checkout
+          - run: 
+              name: "Installing"
+              command: npm install
+          - run:
+              name: "Test"
+              command: npm run test
+
       - heroku/deploy-via-git:
           requires:
-            - node/test
-          branches:
-            only: master
+            - build
+          
