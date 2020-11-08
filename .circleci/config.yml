@@ -4,7 +4,13 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
+      - build:
+        filters:
+            branches:
+              only: master
       - heroku/deploy-via-git:
+        requires:
+            - build
         filter:
           branch:
             only: master
