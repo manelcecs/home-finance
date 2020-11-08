@@ -7,15 +7,9 @@ workflows:
     jobs:
       - node/test:
           version: 10.19.0
-      - build:
-          requires: 
-            - node/test
-          filter:
-            branches:
-              only: master
       - heroku/deploy-via-git:
           requires:
-            - build
+            - node/test
           filter:
             branch:
               only: master
